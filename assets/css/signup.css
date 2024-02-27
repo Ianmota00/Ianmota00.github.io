@@ -127,12 +127,3 @@ button:hover{
   border-radius: 4px;
   display: none;
 }
-
-bottom-image-container {
-  text-align: center;
-}
-
-.bottom-image {
-  max-width: 100%;
-  height: auto;
-}
