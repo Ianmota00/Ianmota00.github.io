@@ -7,7 +7,7 @@
 }
 
 body {
-  background-image: url("../images/fundo02.png");
+  background-image: url("../img/fundo02.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed
@@ -81,7 +81,7 @@ margin-bottom: 20px;
 
 .label-float label{
   color: #272262;
-  pointer-event: none;
+  pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
