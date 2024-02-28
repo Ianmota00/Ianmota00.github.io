@@ -1,36 +1,61 @@
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyDON-GHUbFL6goqOzQ2iaLmoTf_XnRK364",
-  authDomain: "sint-5508d.firebaseapp.com",
-  projectId: "sint-5508d",
-  storageBucket: "sint-5508d.appspot.com",
-  messagingSenderId: "20313037276",
-  appId: "1:20313037276:web:fa56e81bd5a04cd01b5719",
-  measurementId: "G-GBP7LP45EJ"
-};
+let btn = document.querySelector('.fa-eye')
 
+btn.addEventListener('click', ()=>{
+  let inputSenha = document.querySelector('#senha')
+  
+  if(inputSenha.getAttribute('type') == 'password'){
+    inputSenha.setAttribute('type', 'text')
+  } else {
+    inputSenha.setAttribute('type', 'password')
+  }
+})
 
-
-if (localStorage.getItem("token") == null) {
-    alert("Você precisa estar logado para acessar essa página");
-    window.location.href = "./assets/html/signin.html";
+function entrar(){
+  let usuario = document.querySelector('#usuario')
+  let userLabel = document.querySelector('#userLabel')
+  
+  let senha = document.querySelector('#senha')
+  let senhaLabel = document.querySelector('#senhaLabel')
+  
+  let msgError = document.querySelector('#msgError')
+  let listaUser = []
+  
+  let userValid = {
+    nome: '',
+    user: '',
+    senha: ''
   }
   
-  const userLogado = JSON.parse(localStorage.getItem("userLogado"));
+  listaUser = JSON.parse(localStorage.getItem('listaUser'))
   
-  const logado = document.querySelector("#logado");
-  logado.innerHTML = `Olá ${userLogado.nome}`;
-  
-  function sair() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("userLogado");
-    window.location.href = "./assets/html/signin.html";
+  listaUser.forEach((item) => {
+    if(usuario.value == item.userCad && senha.value == item.senhaCad){
+       
+      userValid = {
+         nome: item.nomeCad,
+         user: item.userCad,
+         senha: item.senhaCad
+       }
+      
+    }
+  })
    
-  }
-  function entrar(){
-    localStorage.removeItem("token");
-    localStorage.removeItem("userLogado");
-  window.location.href = "./assets/html/tela02.html";
-  }
+  if(usuario.value == userValid.user && senha.value == userValid.senha){
+    window.location.href = '../assets/html/tela02.html'
     
+    let mathRandom = Math.random().toString(16).substr(2)
+    let token = mathRandom + mathRandom
+    
+    localStorage.setItem('token', token)
+    localStorage.setItem('userLogado', JSON.stringify(userValid))
+  } else {
+    userLabel.setAttribute('style', 'color: red')
+    usuario.setAttribute('style', 'border-color: red')
+    senhaLabel.setAttribute('style', 'color: red')
+    senha.setAttribute('style', 'border-color: red')
+    msgError.setAttribute('style', 'display: block')
+    msgError.innerHTML = 'Usuário ou senha incorretos'
+    usuario.focus()
+  }
   
+}
