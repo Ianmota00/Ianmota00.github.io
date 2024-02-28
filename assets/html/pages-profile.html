@@ -30,7 +30,7 @@
 
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
-						Pages
+						Páginas
 					</li>
 
 					<li class="sidebar-item">
@@ -62,23 +62,12 @@
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="../html/maps-google.html">
-              <i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
+              <i class="align-middle" data-feather="map"></i> <span class="align-middle">Mapa</span>
             </a>
 					</li>
 				</ul>
-
-				<div class="sidebar-cta">
-					<div class="sidebar-cta-content">
-						<strong class="d-inline-block mb-2">Upgrade to Pro</strong>
-						<div class="mb-3 text-sm">
-							Are you looking for more components? Check out our premium version.
-						</div>
-						<div class="d-grid">
-							<a href="../html/upgrade-to-pro.html" class="btn btn-primary">Upgrade to Pro</a>
-						</div>
-					</div>
-				</div>
-			</div>
+				
+			
 		</nav>
 
 		<div class="main">
@@ -242,22 +231,54 @@
 					</ul>
 				</div>
 			</nav>
-
+			
 			<main class="content">
 				<div class="container-fluid p-0">
-
-					<div class="mb-3">
-						<h1 class="h3 d-inline align-middle">Municípios</h1>
-						<a class="badge bg-dark text-white ms-2" href="../html/upgrade-to-pro.html">
-      Get more page examples
-  </a>
+					<div class="card w-50 mx-auto"> <!-- Adicionando classe w-50 para definir a largura do card como 50% -->
+						<div class="card-body text-center">
+							<h1 class="h3 d-inline align-middle">Municípios</h1>
+							<div class="input-group mt-3">
+								<!-- Corrigindo o atributo type para 'text' -->
+								<input type="text" class="form-control" id="search-box" name="q" list="search-options" placeholder="Pesquisar...">
+								<datalist id="search-options">
+									<!-- Opções serão carregadas dinamicamente aqui -->
+								</datalist>
+							</div>
+						</div>
 					</div>
-					<div class="row">
-						<div class="col-md-4 col-xl-3">
-							<div class="card mb-3">
-								<div class="card-header">
-									<h5 class="card-title mb-0">Profile Details</h5>
-								</div>
+				</div>
+			</main>
+			
+			<script>
+				// Função para carregar opções do arquivo externo
+				function carregarOpcoes() {
+					fetch('opcoes.text') // Corrigindo o caminho para o arquivo opcoes.txt
+					.then(response => response.text()) // Converte a resposta para texto
+					.then(data => {
+						const opcoes = data.split('\n'); // Divide o texto em linhas para obter as opções
+						const dataList = document.getElementById('search-options');
+			
+						// Limpa as opções existentes
+						dataList.innerHTML = '';
+			
+						// Adiciona as novas opções
+						opcoes.forEach(opcao => {
+							const option = document.createElement('option');
+							option.value = opcao.trim(); // Remove espaços em branco extras
+							dataList.appendChild(option);
+						});
+					})
+					.catch(error => console.error('Erro ao carregar opções:', error));
+				}
+			
+				// Chama a função para carregar opções quando a página for carregada
+				window.addEventListener('load', carregarOpcoes);
+			</script>
+			
+			
+
+			
+  
 								
 
 	<script src="../js/app.js"></script>
