@@ -1,0 +1,22 @@
+body {
+    background-color: #f0f0f0; /* Cor de fundo padrão */
+    color: #333; /* Cor do texto padrão */
+}
+
+
+/* Estilize o botão de alternância */
+#dark-mode-toggle {
+    padding: 10px 20px;
+    font-size: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilos para o modo escuro */
+.dark-mode {
+    background-color: #333; /* Cor de fundo do modo escuro */
+    color: #fff; /* Cor do texto do modo escuro */
+}
