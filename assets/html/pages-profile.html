@@ -257,7 +257,7 @@
 			<script>
 				// Função para carregar opções do arquivo externo
 				function carregarOpcoes() {
-					fetch('opcoes.txt') // Corrigindo o caminho para o arquivo opcoes.txt
+					fetch('opcoes.text') // Corrigindo o caminho para o arquivo opcoes.txt
 					.then(response => response.text()) // Converte a resposta para texto
 					.then(data => {
 						const opcoes = data.split('\n'); // Divide o texto em linhas para obter as opções
