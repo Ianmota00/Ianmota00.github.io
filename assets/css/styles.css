@@ -6,16 +6,6 @@
   font-family: 'Poppins', sans-serif;
 }
 
-body{
-  background: #519;
-  padding: 0 20px;
-}
-
-::selection{
-  color: #fff;
-  background: #664AFF;
-}
-
 .container{
   display: flex;
   flex-direction: column;
@@ -23,12 +13,12 @@ body{
   height: 10vh;
   max-width: 450px;
   margin: 150px auto;
-  background: #fff;
+  background: #dadce8;
   border-radius: 5px;
 }
 
 .container h2{
-  color: #519;
+  
 }
 
 .container .search{
@@ -93,7 +83,7 @@ body{
   text-align: center;
   line-height: 55px;
   font-size: 20px;
-  color: #644bff;
+  
   cursor: pointer;
 }
 
