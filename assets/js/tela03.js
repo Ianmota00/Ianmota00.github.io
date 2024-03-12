@@ -6,7 +6,7 @@ let linkTag = searchWrapper.querySelector("a");
 let webLink;
 
 inputBox.onkeyup = (e)=>{
-    let userData = e.target.value; //user enetered data
+    let userData = e.target.value; 
     let emptyArray = [];
 
     if (e.key === 'Enter'){
@@ -17,23 +17,20 @@ inputBox.onkeyup = (e)=>{
 
     if(userData){
         icon.onclick = ()=>{
-            webLink = `https://www.google.com/search?q=${userData}`;
-            linkTag.setAttribute("href", webLink);
-            linkTag.click();
         }
         emptyArray = suggestions.filter((data)=>{
-            //filtering array value and user characters to lowercase and return only those words which are start with user enetered chars
+          
             return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
         });
         emptyArray = emptyArray.map((data)=>{
-            // passing return data inside li tag
+            
             return data = `<li>${data}</li>`;
         });
-        searchWrapper.classList.add("active"); //show autocomplete box
+        searchWrapper.classList.add("active"); 
         showSuggestions(emptyArray);
         let allList = sugestBox.querySelectorAll("li");
         for (let i = 0; i < allList.length; i++) {
-            //adding onclick attribute in all li tag
+            
             allList[i].setAttribute("onclick", "select(this)");
         }
 
@@ -41,19 +38,11 @@ inputBox.onkeyup = (e)=>{
           searchWrapper.classList.remove("active");
         }
     }else{
-        searchWrapper.classList.remove("active"); //hide autocomplete box
+        searchWrapper.classList.remove("active"); 
     }
 }
 
 function select(element){
-    let selectData = element.textContent;
-    inputBox.value = selectData;
-    icon.onclick = ()=>{
-        webLink = `https://www.google.com/search?q=${selectData}`;
-        linkTag.setAttribute("href", webLink);
-        linkTag.click();
-    }
-    searchWrapper.classList.remove("active");
 }
 
 function showSuggestions(list){
@@ -67,6 +56,9 @@ function showSuggestions(list){
     }
     sugestBox.innerHTML = listData;
 }
+
+
+
 
 
 
